@@ -1,0 +1,16 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+huggingface-hub = "*"
+"python-coreml-stable-diffusion==0.1.0" = {git = "https://github.com/apple/ml-stable-diffusion"}
+
+[scripts]
+login = "huggingface-cli login"
+fetch_model = "python ./download_model.py"
+inference = "/bin/sh -c 'python -m python_coreml_stable_diffusion.pipeline --prompt $1 -i $2 -o outputs/ --compute-unit ALL --seed 93'"
+
+[requires]
+python_full_version = "3.10.8"
